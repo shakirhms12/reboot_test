@@ -13,6 +13,6 @@ data "aws_instance" "target_instance" {
 
 resource "null_resource" "reboot_vm" {
   provisioner "local-exec" {
-    command = "aws ec2 stop-instances --instance-ids ${data.aws_instance.target_instance.id} --region ${var.region}"
+    command = "aws ec2 start-instances --instance-ids ${data.aws_instance.target_instance.id} --region ${var.region}"
   }
 }
